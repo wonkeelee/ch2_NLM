@@ -137,6 +137,8 @@ model = RNNModel(ntokens, hidden_size, 2, dropout).to(device)
 optimizer = torch.optim.Adam(model.parameters(), lr=0.005)
 criterion = nn.NLLLoss(ignore_index=0, reduction='mean')
 
+isTrain=False # Flag variable
+
 ########################################################################
 #   Training code
 ########################################################################
@@ -194,8 +196,6 @@ def evaluate():
     mean_loss = statistics.mean(mean_loss)
 
     return mean_loss, mean_acc
-
-isTrain=False # Flag variable
 
 if isTrain: # set False if you don't need to train model
     start_time = time.time()
